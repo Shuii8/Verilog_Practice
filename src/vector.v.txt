@@ -1,0 +1,9 @@
+module ejercicio1 (input [7:0] in, output [3:0] hi, output [3:0] lo, output [7:0] out);
+  
+  
+  assign out = in;
+  assign lo = in [3:0];
+  assign hi = in [7:4];
+  
+  
+endmodule
