@@ -2,7 +2,7 @@ module top_module (
     input clk,
     input reset,   // Synchronous active-high reset
     input w,
-    output z
+    output reg z
 );
     
     parameter A = 3'd0, B = 3'd1, C = 3'd2, D = 3'd3, E = 3'd4, F = 3'd5;
@@ -18,7 +18,7 @@ module top_module (
         end
     
     //next_state logic
-    always@(state,w)
+  always@(*)
         begin
             case(state)
                 A: next_state = w ? B : A;
@@ -32,7 +32,7 @@ module top_module (
         end
     
     //output_logic
-    always@(state)
+  always@(*)
         begin
             case(state)
                 A: z = 1'b0;
