@@ -1,5 +1,4 @@
 
-`timescale 1ns/1ps
 module tb;
   reg clk=0, reset=1, w=0;
   wire z;
@@ -26,4 +25,8 @@ module tb;
 
     $finish;
   end
+  
+  always @(posedge clk) begin 
+    $strobe("t=%0t state=%0d z=%0d", $time, tb.dut.state, z);
+	end
 endmodule
