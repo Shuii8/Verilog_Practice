@@ -1,22 +1,24 @@
-module tb_top;
-
-	reg [3:0] a, b;
-	wire [3:0] sum;
-	wire [7:0] product;
-
-  top_dut dut1 (.a(a), .b(b), .sum(sum), .product(product)); 
-
-	initial begin
-
-	$dumpfile("dump.vcd");
-	$dumpvars(0, tb_top);
-
-        // Mensajes de seguimiento
-    $display("Tiempo | a b | sum product");
-    $monitor("%4t | %d %d | %d %d", 
-              $time, tb_top.a, tb_top.b, tb_top.sum, tb_top.product);
- 
-		#50 $finish;
- 
-	end
+module tb;
+  
+  reg [3:0] a, b;
+  wire [7:0] sum, multi;
+  
+  
+  top dut(a, b, sum, multi);
+  
+  initial begin
+    
+    a = 4'd0; b = 4'd0;
+    
+    #10 a = 4'd1; b = 4'd2;
+    #10 a = 4'd2; b = 4'd3;
+    
+    #5 $finish;
+    
+    
+  end
+  
+  initial
+    $monitor ("tiempo:  %0t, a:%d, b:%d, sum:%d, multi:%d", $time, a, b, sum, multi);
+  
 endmodule
