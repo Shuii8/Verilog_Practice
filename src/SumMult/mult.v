@@ -1,5 +1,6 @@
-module mult (input [3:0] a, b, output [3:0] y);
-
-	assign y = a*b;
-
+module mult(input [3:0] a, b, output [7:0] out);
+  
+  assign out = a*b;
+  
+  
 endmodule
