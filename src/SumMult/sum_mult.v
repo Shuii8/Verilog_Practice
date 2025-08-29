@@ -1,22 +1,10 @@
-module top_dut ( 
-  	input [3:0] a, b,
-  	output [3:0] sum,
-	output [7:0] product
-);
-  
-	adder dut1 (.a(a), .b(b), .y(sum));
-	multiplier dut2 (.a(a), .b(b), .y(product));
-  
-  	initial begin 
+`include "suma.v"
+`include "mult.v"
 
-		a = 4'd0;
-		b = 4'd1;
-		#10 a = 4'd1;
-		b = 4'd2;
-		#10 a = 4'd2;
-		b = 4'd3;
-		#10 $finish;
- 
-	end
+module top(input [3:0] A, B, output [7:0] OUT1, output [7:0] OUT2);
   
-  endmodule
+  suma sama1( .a(A), .b(B), .out(OUT1));
+  mult mult1( .a(A), .b(B), .out(OUT2));
+  
+  
+endmodule
